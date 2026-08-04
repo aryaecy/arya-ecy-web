@@ -1,3 +1,4 @@
+import WhyArya from "@/components/WhyArya";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
@@ -12,6 +13,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Services />
+      <WhyArya />
       <Software />
       <Stats />
       <AI />
