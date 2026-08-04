@@ -29,14 +29,14 @@ const services = [
     title: "ÇED Yönetimi",
     description:
       "ÇED süreçlerini planlayın, takip edin ve dijital olarak yönetin.",
-    href: "/hizmetler/ced-yonetimi",
+    href: "/hizmetler/ced",
   },
   {
     icon: Droplets,
     title: "Atıksu Yönetimi",
     description:
       "Analizler, deşarj izinleri ve arıtma süreçlerini takip edin.",
-    href: "/hizmetler/atiksu-yonetimi",
+    href: "/hizmetler/atik-su-yonetimi",
   },
   {
     icon: Recycle,
