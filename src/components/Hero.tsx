@@ -32,7 +32,7 @@ export default function Hero() {
           <div className="mt-10 flex gap-5">
 
             <a
-              href="#"
+              href="https://app.aryaecy.com"
               className="bg-white text-green-700 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition"
             >
               Platforma Giriş
