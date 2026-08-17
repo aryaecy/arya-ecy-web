@@ -1,0 +1,3 @@
+-- Önce Authentication > Users bölümünden kendi hesabınızı oluşturun.
+-- Sonra aşağıdaki e-postayı kendi e-postanızla değiştirip çalıştırın.
+-- update public.profiles set role='system_admin', full_name='ARYA Yönetici' where email='SIZIN_EPOSTANIZ@example.com';

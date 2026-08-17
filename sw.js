@@ -1,4 +1,4 @@
-const CACHE='arya-akademi-v2.4.2';
+const CACHE='arya-akademi-v2.1.0';
 const CORE=['/','/index.html','/arya-logo.png','/icon-192.png','/icon-512.png','/manifest.webmanifest','/offline.html'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('arya-akademi-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
