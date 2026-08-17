@@ -1,6 +1,6 @@
 export type ContentType='article'|'announcement'|'ad'|'about'|'important'|'regulation'|'news'|'contact';
 export type SiteContent={id?:string;type:ContentType;title:string;title_en?:string;excerpt?:string;excerpt_en?:string;body?:string;body_en?:string;image_url?:string;file_url?:string;published:boolean;published_at?:string;created_at?:string;sort_order?:number;category?:string;subcategory?:string};
-export type CareerApplication={id?:string;application_type:'job'|'internship';full_name:string;email:string;phone?:string;city?:string;education?:string;experience?:string;linkedin_url?:string;message?:string;consent:boolean;status?:string;created_at?:string};
+export type CareerApplication={id?:string;application_type:'job'|'internship';full_name:string;email:string;phone?:string;city?:string;education?:string;experience?:string;cv_path?:string;message?:string;consent:boolean;status?:string;created_at?:string};
 const url=process.env.NEXT_PUBLIC_SUPABASE_URL;
 const anon=process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 export const cmsEnabled=Boolean(url&&anon);
@@ -47,6 +47,28 @@ async function uploadToBucket(token:string,file:File,bucket:string,prefix:string
 }
 export const uploadPdf=(token:string,file:File)=>uploadToBucket(token,file,'site-documents','regulations',f=>f.type==='application/pdf'||f.name.toLowerCase().endsWith('.pdf'),'Yalnızca PDF dosyası yüklenebilir.');
 export const uploadMedia=(token:string,file:File)=>uploadToBucket(token,file,'site-media','content',f=>f.type.startsWith('image/')||f.type.startsWith('video/'),'PNG/JPG/WEBP görsel veya MP4/WEBM video yükleyin.');
+
+export async function uploadCareerCv(file:File):Promise<string>{
+ if(!url||!anon) throw new Error('Başvuru sistemi şu anda kullanılamıyor.');
+ const lower=file.name.toLowerCase();
+ const ok=file.type==='application/pdf'||file.type==='application/msword'||file.type==='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||lower.endsWith('.pdf')||lower.endsWith('.doc')||lower.endsWith('.docx');
+ if(!ok) throw new Error('CV için PDF, DOC veya DOCX dosyası yükleyin.');
+ if(file.size>10*1024*1024) throw new Error('CV dosyası en fazla 10 MB olabilir.');
+ const safe=file.name.replace(/[^a-zA-Z0-9._-]/g,'-');
+ const id=typeof crypto!=='undefined'&&'randomUUID' in crypto?crypto.randomUUID():`${Date.now()}-${Math.random().toString(36).slice(2)}`;
+ const path=`applications/${id}-${safe}`;
+ const r=await fetch(`${url}/storage/v1/object/career-cv/${path}`,{method:'POST',headers:{apikey:anon,Authorization:`Bearer ${anon}`,'Content-Type':file.type||'application/octet-stream','x-upsert':'false'},body:file});
+ if(!r.ok) throw new Error('CV yüklenemedi. Lütfen tekrar deneyin.');
+ return path;
+}
+export async function getCareerCvSignedUrl(token:string,path:string):Promise<string>{
+ if(!url||!anon) throw new Error('Supabase ortam değişkenleri tanımlı değil.');
+ const r=await fetch(`${url}/storage/v1/object/sign/career-cv/${path}`,{method:'POST',headers:headers(token),body:JSON.stringify({expiresIn:300})});
+ const d=await r.json();
+ if(!r.ok||!d?.signedURL) throw new Error('CV bağlantısı oluşturulamadı.');
+ return `${url}/storage/v1${d.signedURL}`;
+}
+
 export async function submitCareerApplication(item:CareerApplication){
  if(!cmsEnabled) throw new Error('Başvuru sistemi şu anda kullanılamıyor.');
  const r=await fetch(`${url}/rest/v1/career_applications`,{method:'POST',headers:{...headers(),Prefer:'return=minimal'},body:JSON.stringify(item)});

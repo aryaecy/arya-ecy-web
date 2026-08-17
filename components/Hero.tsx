@@ -5,7 +5,7 @@ export default function Hero(){const {lang}=useLanguage();const en=lang==='en';r
   <div className="final-hero-overlay" />
   <div className="final-hero-copy">
     <span className="hero-kicker">{en?'ARYA INTEGRATED ENVIRONMENTAL MANAGEMENT':'ARYA ENTEGRE ÇEVRE YÖNETİMİ'}</span>
-    <h1>{en?'WE MANAGE THE ENVIRONMENT,':'ÇEVREYİ YÖNETİR,'}<br/><em>{en?'WE PROTECT YOUR BUSINESS.':'İŞLETMENİZİ GÜVENCEYE ALIRIZ.'}</em></h1>
+    <h1>{en?'WE MANAGE YOUR ENVIRONMENTAL PROCESSES,':'ÇEVRE SÜREÇLERİNİZİ YÖNETİR,'}<br/><em>{en?'WE PROTECT YOUR BUSINESS.':'İŞLETMENİZİ GÜVENCEYE ALIRIZ.'}</em></h1>
     <div className="hero-line"/>
     <p>{en?'From regulatory compliance and field audits to waste, water, chemicals, carbon and sustainability, we manage environmental processes under one integrated discipline.':'Mevzuat uyumundan saha denetimine; atık, su, kimyasal, karbon ve sürdürülebilirlik süreçlerine kadar çevre yönetimini tek bir disiplin altında yürütüyoruz.'}</p>
     <div className="hero-values">
