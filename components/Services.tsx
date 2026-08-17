@@ -1,0 +1,2 @@
+import Link from 'next/link'; import {LogIn} from 'lucide-react'; import {services} from '@/lib/siteData';
+export default function Services(){return <section id="hizmetler" className="services-panel"><div className="section-heading"><span>Hizmetlerimiz</span><h2>Entegre çevre yönetimi hizmetleri</h2></div><div className="service-grid">{services.map(s=>{const Icon=s.icon;return <Link key={s.slug} href={`/hizmetler/${s.slug}`} className="service-card"><Icon size={22}/><h3>{s.title}</h3><LogIn className="service-enter" size={18}/></Link>})}</div></section>}
