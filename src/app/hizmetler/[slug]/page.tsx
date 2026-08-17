@@ -1,3 +1,52 @@
-import {services} from '@/lib/siteData';import {notFound} from 'next/navigation';import Link from 'next/link';import {Home} from 'lucide-react';
+import {services} from '@/lib/siteData';
+import {notFound} from 'next/navigation';
+import Link from 'next/link';
+import {ArrowLeft, CheckCircle2, Home, Sparkles} from 'lucide-react';
+
 export function generateStaticParams(){return services.map(s=>({slug:s.slug}))}
-export default async function ServicePage({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const s=services.find(x=>x.slug===slug);if(!s)notFound();const Icon=s.icon;return <main className="article-page"><div className="service-top"><a href="/" className="brand"><img src="/logo.png" alt="ARYA ECY"/></a><Link href="/" className="home-return"><Home size={17}/> Ana Ekrana Dön</Link></div><section className="service-detail"><article className="service-detail-copy"><span>ARYA ECY • Hizmetler</span><Icon size={38}/><h1>{s.title}</h1><p className="lead">{s.intro}</p>{s.sections.map(([h,p])=><section key={h}><h2>{h}</h2><p>{p}</p></section>)}<h2>Çalışma çıktıları ve teslimatlar</h2><p>Her hizmet, işletmenin faaliyet yapısına göre somut çıktılarla tamamlanır: mevcut durum ve mevzuat uyum değerlendirmesi, yükümlülük ve termin listeleri, saha kontrol kayıtları, gerekli başvuru/beyan dosyaları, ölçüm veya analiz takipleri, aksiyon planları ve yönetim için özet performans değerlendirmeleri. Böylece yapılan çalışma kişilere bağlı kalmaz; kurumsal hafızaya dönüşür.</p><h2>ARYA ECY ile hizmetin yönetimi</h2><p>Çalışma başlangıcında mevcut durum, yasal yükümlülükler, saha koşulları ve kurum içi sorumluluklar birlikte değerlendirilir. Bulgular yalnızca raporlanmaz; uygulanabilir aksiyonlara dönüştürülür, sorumlular ve terminler belirlenir, tamamlanma durumu izlenir. Değişen faaliyetler ve mevzuat gereklilikleri periyodik kontrollerle sisteme dahil edilir.</p><h2>Dokümantasyon ve izlenebilirlik</h2><p>İzinler, beyanlar, ölçüm ve analiz sonuçları, saha kayıtları, eğitimler ve ilgili resmi yazışmalar düzenli bir kayıt yapısında takip edilir. Böylece geçmiş işlemlere erişim kolaylaşır, yaklaşan yükümlülükler zamanında görülür ve resmi denetimlerde ihtiyaç duyulan kanıtlar daha hızlı sunulabilir.</p><h2>Saha ve sürekli iyileştirme</h2><p>ARYA ECY yaklaşımında mevzuat uyumu ile saha uygulaması birbirinden ayrılmaz. Saha gözlemleri, çalışan uygulamaları, ekipman ve depolama koşulları, ölçüm sonuçları ve performans verileri birlikte değerlendirilerek risk azaltıcı ve verimlilik artırıcı çalışmalar planlanır.</p><div className="detail-note"><b>Sonuç odaklı yaklaşım</b><p>Hedefimiz yalnızca bir yükümlülüğü tamamlamak değil; işletmede sürdürülebilir, ölçülebilir, denetlenebilir ve günlük operasyonla uyumlu bir yönetim sistemi oluşturmaktır.</p></div></article><aside className="service-detail-visual"><img src="/environment-hero.png" alt={`${s.title} hizmeti - ARYA ECY`}/><div><b>{s.title}</b><span>Uzman ekip • saha uygulaması • mevzuat uyumu • sürekli iyileştirme</span></div></aside></section></main>}
+
+export default async function ServicePage({params}:{params:Promise<{slug:string}>}){
+  const {slug}=await params;
+  const s=services.find(x=>x.slug===slug);
+  if(!s)notFound();
+  const Icon=s.icon;
+  return <main className="service-page-pro">
+    <header className="service-pro-header">
+      <a href="/" className="service-pro-brand"><img src="/logo.png" alt="ARYA ECY"/></a>
+      <Link href="/" className="home-return"><Home size={16}/> Ana Ekrana Dön</Link>
+    </header>
+
+    <section className="service-pro-hero">
+      <div className="service-pro-title">
+        <span>ARYA ECY / HİZMETLER</span>
+        <div className="service-icon"><Icon size={27}/></div>
+        <h1>{s.title}</h1>
+        <p>{s.intro}</p>
+        <div className="service-highlight"><Sparkles size={17}/><b>{s.highlight}</b></div>
+      </div>
+      <div className="service-pro-image" role="img" aria-label={`${s.title} - ARYA ECY çevre yönetimi hizmeti`}/>
+    </section>
+
+    <section className="service-pro-body">
+      <aside className="service-pro-aside">
+        <b>Bu hizmette ne sağlıyoruz?</b>
+        <p>{s.summary}</p>
+        <div className="deliverables">
+          <span>Çalışma çıktıları</span>
+          {s.deliverables.map(item=><div key={item}><CheckCircle2 size={15}/>{item}</div>)}
+        </div>
+        <Link href="/hizmetler" className="all-services"><ArrowLeft size={15}/> Tüm hizmetler</Link>
+      </aside>
+      <article className="service-pro-content">
+        {s.sections.map(([h,p],i)=><section key={h}>
+          <div className="section-no">0{i+1}</div>
+          <div><h2>{h.replace(/^\d+\.\s*/, '')}</h2><p>{p}</p></div>
+        </section>)}
+        <div className="service-result">
+          <b>ARYA ECY çalışma prensibi</b>
+          <p>Her çalışma mevcut durumun anlaşılmasıyla başlar; mevzuat, saha ve operasyon birlikte değerlendirilir. Bulgular yalnızca rapora yazılmaz, sorumlusu ve termin tarihi belli aksiyonlara dönüştürülür. Tamamlanan işlerin kanıtları düzenli tutulur ve değişen faaliyetler sisteme yeniden dahil edilir. Böylece hizmet, tek seferlik doküman üretiminden çıkarak işletmenin günlük yönetimine yerleşir.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+}
