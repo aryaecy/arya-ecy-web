@@ -4,12 +4,12 @@ const url=process.env.NEXT_PUBLIC_SUPABASE_URL;
 const anon=process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 export const cmsEnabled=Boolean(url&&anon);
 const headers=(token?:string)=>({apikey:anon||'',Authorization:`Bearer ${token||anon||''}`,'Content-Type':'application/json'});
-export async function getPublished(type?:ContentType){
+export async function getPublished(type?:ContentType): Promise<SiteContent[]>{
  if(!cmsEnabled) return [] as SiteContent[];
  const q=type?`&type=eq.${type}`:'';
  const r=await fetch(`${url}/rest/v1/site_content?select=*&published=eq.true${q}&order=published_at.desc`,{headers:headers(),cache:'no-store'});
  if(!r.ok) return [];
- return r.json();
+ return (await r.json()) as SiteContent[];
 }
 export async function signInAdmin(email:string,password:string){
  if(!cmsEnabled) throw new Error('Supabase ortam değişkenleri tanımlı değil.');
@@ -19,7 +19,7 @@ export async function signInAdmin(email:string,password:string){
  const rows=await chk.json(); if(!chk.ok||!Array.isArray(rows)||rows.length===0) throw new Error('Bu hesap yönetim yetkisine sahip değil.');
  return data;
 }
-export async function adminList(token:string){const r=await fetch(`${url}/rest/v1/site_content?select=*&order=created_at.desc`,{headers:headers(token),cache:'no-store'});if(!r.ok)throw new Error('İçerikler alınamadı');return r.json();}
+export async function adminList(token:string): Promise<SiteContent[]>{const r=await fetch(`${url}/rest/v1/site_content?select=*&order=created_at.desc`,{headers:headers(token),cache:'no-store'});if(!r.ok)throw new Error('İçerikler alınamadı');return (await r.json()) as SiteContent[];}
 export async function saveContent(token:string,item:SiteContent){
  const payload={...item,published_at:item.published?new Date().toISOString():null};
  if(item.id){const {id,...rest}=payload;const r=await fetch(`${url}/rest/v1/site_content?id=eq.${id}`,{method:'PATCH',headers:{...headers(token),Prefer:'return=representation'},body:JSON.stringify(rest)});if(!r.ok)throw new Error('Güncelleme başarısız');return r.json();}
