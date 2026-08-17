@@ -1,23 +1,2 @@
-import WhyArya from "@/components/WhyArya";
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import Software from "@/components/Software";
-import Stats from "@/components/Stats";
-import AI from "@/components/AI";
-import Footer from "@/components/Footer";
-
-export default function Home() {
-  return (
-    <>
-      <Navbar />
-      <Hero />
-      <Services />
-      <WhyArya />
-      <Software />
-      <Stats />
-      <AI />
-      <Footer />
-    </>
-  );
-}
+import Navbar from '@/components/Navbar';import Hero from '@/components/Hero';import Services from '@/components/Services';import AI from '@/components/AI';import Footer from '@/components/Footer';import {AnnouncementTicker,HomeAd,LibraryTeaser} from '@/components/LiveContent';import {ministryUrl,ucbsUrl} from '@/lib/siteData';import {Linkedin,Instagram,ExternalLink} from 'lucide-react';
+export default function Home(){return <main className="site-shell"><Navbar/><div className="home-stage"><Hero/><Services/><AI/><Footer/><HomeAd/><LibraryTeaser/></div><div className="quick-links left"><a href={ministryUrl} target="_blank" rel="noreferrer"><ExternalLink size={15}/>Çevre Bakanlığı</a><a href={ucbsUrl} target="_blank" rel="noreferrer"><ExternalLink size={15}/>UÇBS</a></div><div className="quick-links right"><a href="https://www.linkedin.com/company/arya-entegre-%C3%A7evre-y%C3%B6netimi-ve-m%C3%BChendislik-a-%C5%9F/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={18}/></a><a href="#" aria-label="Instagram" title="Instagram bağlantısını Yönetim dokümanındaki site ayarından güncelleyin"><Instagram size={18}/></a></div><AnnouncementTicker/></main>}

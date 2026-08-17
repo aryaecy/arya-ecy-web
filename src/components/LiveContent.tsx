@@ -1,0 +1,6 @@
+'use client';
+import {useEffect,useState} from 'react'; import Link from 'next/link'; import {getPublished,SiteContent} from '@/lib/cms';
+const fallbackAnnouncements=[{title:'Çevre mevzuatı, beyan dönemleri ve güncel yükümlülükler için duyurularımızı takip edin.'},{title:'ARYA ECY çevre yönetimi hizmetleri Türkiye genelinde yürütülmektedir.'}];
+export function AnnouncementTicker(){const [items,setItems]=useState<any[]>(fallbackAnnouncements);useEffect(()=>{getPublished('announcement').then(x=>x.length&&setItems(x));},[]);return <div className="announcement-bar"><strong>Duyurular</strong><div className="announcement-window"><div className="announcement-track">{items.map((x,i)=><span key={x.id||i}>{x.title}</span>)}</div></div></div>}
+export function HomeAd(){const [ad,setAd]=useState<SiteContent|null>(null);useEffect(()=>{getPublished('ad').then(x=>setAd(x[0]||null));},[]);if(!ad)return null;return <div className="home-ad"><small>Güncel</small><b>{ad.title}</b><span>{ad.excerpt}</span></div>}
+export function LibraryTeaser(){const [items,setItems]=useState<SiteContent[]>([]);useEffect(()=>{getPublished('article').then(x=>setItems(x.slice(0,3)));},[]);if(!items.length)return null;return <div className="library-teaser"><b>Kütüphaneden</b>{items.map(x=><Link key={x.id} href={`/kutuphane/${x.id}`}>{x.title}</Link>)}</div>}
