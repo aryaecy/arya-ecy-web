@@ -8,3 +8,12 @@
 6. "Yayına al" işaretli içerikler Supabase REST API üzerinden ziyaretçilere sunulur. Makaleler Kütüphane'ye, duyurular alt banda, reklamlar ana ekrandaki Güncel alanına gelir.
 
 Not: Instagram bağlantısı `src/app/page.tsx` içinde `href="#"` olarak bırakıldı; firmanın kesin Instagram adresi bilindiğinde gerçek adresle değiştirin.
+
+## V2.4 ek kurulumu
+Supabase SQL Editor içinde `supabase/002_v2_4_content.sql` dosyasını bir kez çalıştırın. Bu migration:
+- Hakkımızda, Önemli ve Kanun/Yönetmelikler içerik türlerini açar.
+- PDF dosya URL'si ve sıra numarası alanlarını ekler.
+- `site-documents` adlı public Storage bucket oluşturur.
+- PDF yükleme/değiştirme/silme yetkisini sadece `admin_users` tablosundaki yetkili hesaplara verir.
+
+Yönetim ekranında Kanun / Yönetmelikler bölümünde sıra numarası girip PDF yükleyebilirsiniz. Yayına alınan PDF'ler sitedeki Kanun / Yönetmelikler sayfasında sıra numarasına göre listelenir.

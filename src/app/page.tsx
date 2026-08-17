@@ -1,2 +1,2 @@
-import Navbar from '@/components/Navbar';import Hero from '@/components/Hero';import Services from '@/components/Services';import AI from '@/components/AI';import Footer from '@/components/Footer';import {AnnouncementTicker,HomeAd,LibraryTeaser} from '@/components/LiveContent';
-export default function Home(){return <main className="site-shell"><Navbar/><div className="home-stage"><Hero/><Services/><AI/><Footer/><HomeAd/><LibraryTeaser/></div><AnnouncementTicker/></main>}
+import Navbar from '@/components/Navbar';import Hero from '@/components/Hero';import Footer from '@/components/Footer';import {AnnouncementTicker,HomeAbout,ImportantPopup} from '@/components/LiveContent';
+export default function Home(){return <main className="site-shell v24-shell"><Navbar/><div className="v24-home"><Hero/><HomeAbout/><Footer/></div><ImportantPopup/><AnnouncementTicker/></main>}
