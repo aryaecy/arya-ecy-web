@@ -1,5 +1,5 @@
 export type ContentType='article'|'announcement'|'ad'|'about'|'important'|'regulation';
-export type SiteContent={id?:string;type:ContentType;title:string;excerpt?:string;body?:string;image_url?:string;file_url?:string;published:boolean;published_at?:string;created_at?:string;sort_order?:number};
+export type SiteContent={id?:string;type:ContentType;title:string;excerpt?:string;body?:string;image_url?:string;file_url?:string;published:boolean;published_at?:string;created_at?:string;sort_order?:number;category?:string;subcategory?:string};
 const url=process.env.NEXT_PUBLIC_SUPABASE_URL;
 const anon=process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 export const cmsEnabled=Boolean(url&&anon);
