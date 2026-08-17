@@ -29,7 +29,7 @@ export const services: Service[] = [
     ],
     deliverables:['İşletmeye özel çevre mevzuatı ve yükümlülük matrisi','Yıllık çevre yönetim / beyan / ölçüm takvimi','Saha denetim formları ve fotoğraflı uygunsuzluk raporları','İzin, lisans, ÇED ve resmi başvuru takip dosyaları','EÇBS ve dönemsel beyan kontrol kayıtları','Çevresel risk ve aksiyon takip tablosu','Yönetim için periyodik çevre performans raporu'],
     highlight:'Mevzuatı masada, uygulamayı sahada, kanıtı kayıt sisteminde birlikte yönetiriz.',
-    image:'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1600&q=82'
+    image:'/service-environment.webp'
   },
   {
     slug:'ced-yonetimi', icon:ClipboardCheck, title:'ÇED Yönetimi Danışmanlığı',
@@ -44,7 +44,7 @@ export const services: Service[] = [
     ],
     deliverables:['ÇED kapsam / proje değişikliği ön değerlendirmesi','Teknik veri ve doküman ihtiyaç listesi','Başvuru ve revizyon takip tablosu','Karar sonrası çevresel taahhüt matrisi','Yatırım çevre izinleri yol haritası'],
     highlight:'Yatırım kararını çevresel yükümlülüklerle aynı masada yönetiriz.',
-    image:'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1600&q=82'
+    image:'/service-eia.jpg'
   },
   {
     slug:'atiksu-yonetimi', icon:Droplets, title:'Atıksu Yönetimi Danışmanlığı',
@@ -59,7 +59,7 @@ export const services: Service[] = [
     ],
     deliverables:['Su ve atıksu akış şeması','Atıksu karakterizasyon / numune planı','Arıtma performans kontrol listesi','Deşarj ve analiz takip tablosu','Azaltım ve geri kullanım fırsat listesi'],
     highlight:'Sorunu çıkış borusunda değil, oluştuğu proseste ararız.',
-    image:'https://images.unsplash.com/photo-1538300342682-cf57afb97285?auto=format&fit=crop&w=1600&q=82'
+    image:'/service-water.webp'
   },
   {
     slug:'atik-yonetimi', icon:Recycle, title:'Atık Yönetimi Danışmanlığı',
@@ -77,7 +77,7 @@ export const services: Service[] = [
     ],
     deliverables:['Proses bazlı atık envanteri ve atık kodu matrisi','Kaynağında ayrıştırma / ekipman / etiketleme saha standardı','Geçici depolama alanı uygunluk ve iyileştirme raporu','Lisanslı tesis ve atık sevk kontrol sistemi','Atık miktar / maliyet / geri kazanım takip tablosu','Dönemsel kayıt ve beyan kontrol dosyası','Atık azaltım ve kaynak verimliliği aksiyon planı'],
     highlight:'Atığı yalnızca uzaklaştırmayız; kaynağını, riskini, maliyetini ve geri kazanım değerini birlikte yönetiriz.',
-    image:'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=1600&q=82'
+    image:'/service-waste.jpg'
   },
   {
     slug:'tmgd', icon:Truck, title:'TMGD Danışmanlığı',
@@ -92,7 +92,7 @@ export const services: Service[] = [
     ],
     deliverables:['ADR rol ve faaliyet matrisi','Tehlikeli madde envanteri','Operasyon kontrol formları','Uygunsuzluk / olay takip kayıtları','Dönemsel ve yıllık TMGD değerlendirmeleri'],
     highlight:'Belgeyi değil, tehlikeli madde operasyonunun tamamını yönetiriz.',
-    image:'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1600&q=82'
+    image:'/service-tmgd.jpg'
   },
   {
     slug:'kdu', icon:FlaskConical, title:'KDU Danışmanlığı',
@@ -107,7 +107,7 @@ export const services: Service[] = [
     ],
     deliverables:['Kurumsal kimyasal envanter','GBF / SDS uygunluk listesi','Kimyasal depolama uyum kontrolü','Yükümlülük eşik takip tablosu','Kimyasal saha iyileştirme aksiyonları'],
     highlight:'Kimyasal veriyi raflarda değil, karar mekanizmasının içinde tutarız.',
-    image:'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1600&q=82'
+    image:'/service-kdu.jpg'
   },
   {
     slug:'esg', icon:Globe2, title:'ESG Danışmanlığı',
@@ -122,7 +122,7 @@ export const services: Service[] = [
     ],
     deliverables:['ESG konu ve gösterge matrisi','Veri sahipliği / sorumluluk tablosu','Baz yıl ve hedef seti','Kanıt / veri doğrulama listesi','Yönetim ESG performans özeti'],
     highlight:'ESG’yi rapor yazımından önce veri ve yönetim disiplini olarak kurarız.',
-    image:'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=82'
+    image:'/service-esg.png'
   },
   {
     slug:'karbon-ayak-izi', icon:Trees, title:'Karbon Ayak İzi Danışmanlığı',
@@ -137,7 +137,7 @@ export const services: Service[] = [
     ],
     deliverables:['Sera gazı kaynak envanteri','Kurumsal karbon ayak izi hesaplama dosyası','Veri / kanıt kalite kontrol tablosu','Emisyon yoğunluğu ve sıcak nokta analizi','Karbon azaltım yol haritası'],
     highlight:'Karbon hesabını bir sonuç tablosundan azaltım kararlarına dönüştürürüz.',
-    image:'https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1600&q=82'
+    image:'/service-carbon.png'
   },
   {
     slug:'su-ayak-izi', icon:Waves, title:'Su Ayak İzi Danışmanlığı',
@@ -152,7 +152,7 @@ export const services: Service[] = [
     ],
     deliverables:['Su kaynak ve tüketim envanteri','Proses bazlı su dengesi','Havza / su riski değerlendirmesi','Kayıp ve geri kullanım fırsat listesi','Su performans göstergeleri ve hedefleri'],
     highlight:'Suyu yalnızca tüketim miktarıyla değil, bulunduğu havzanın değeriyle birlikte yönetiriz.',
-    image:'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=1600&q=82'
+    image:'/service-water.webp'
   },
   {
     slug:'su-verimliligi', icon:Gauge, title:'Su Verimliliği Danışmanlığı',
@@ -167,7 +167,7 @@ export const services: Service[] = [
     ],
     deliverables:['Sayaç ve ölçüm ihtiyaç analizi','Detaylı su dengesi','Hızlı kazanım aksiyon listesi','Geri kullanım teknik ön değerlendirmesi','Tasarruf / yatırım önceliklendirme tablosu'],
     highlight:'Her metreküp su için “nerede, neden ve nasıl azaltılır?” sorusunu sorarız.',
-    image:'https://images.unsplash.com/photo-1521207418485-99c705420785?auto=format&fit=crop&w=1600&q=82'
+    image:'/service-water-eff.jpg'
   },
   {
     slug:'enerji-yonetimi', icon:Zap, title:'Enerji Yönetimi Danışmanlığı',
@@ -182,7 +182,7 @@ export const services: Service[] = [
     ],
     deliverables:['Enerji tüketim ve yoğunluk analizi','Önemli enerji kullanım alanları listesi','Enerji kayıp / verimlilik fırsat raporu','Teknik-ekonomik proje önceliklendirmesi','Periyodik enerji performans takip seti'],
     highlight:'Enerjiyi faturada değil, proseste yönetiriz.',
-    image:'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1600&q=82'
+    image:'/service-energy.png'
   },
 ];
 
