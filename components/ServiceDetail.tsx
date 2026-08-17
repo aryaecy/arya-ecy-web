@@ -1,32 +1,3 @@
-import {services} from '@/lib/siteData';
-import Link from 'next/link';
-import {ArrowLeft, CheckCircle2, Home, Sparkles} from 'lucide-react';
-
-export default function ServiceDetail({slug}:{slug:string}){
-  const s=services.find(x=>x.slug===slug);
-  if(!s) return null;
-  const Icon=s.icon;
-  return <main className="service-page-pro">
-    <header className="service-pro-header">
-      <Link href="/" className="service-pro-brand"><img src="/logo.png" alt="ARYA ECY"/></Link>
-      <Link href="/" className="home-return"><Home size={16}/> Ana Sayfaya Dön</Link>
-    </header>
-    <section className="service-pro-hero">
-      <div className="service-pro-title">
-        <span>ARYA ECY / HİZMETLER</span><div className="service-icon"><Icon size={27}/></div>
-        <h1>{s.title}</h1><p>{s.intro}</p>
-        <div className="service-highlight"><Sparkles size={17}/><b>{s.highlight}</b></div>
-      </div>
-      <div className="service-pro-image" style={{backgroundImage:`linear-gradient(135deg,rgba(18,53,43,.04),rgba(18,53,43,.12)),url("${s.image}")`}} role="img" aria-label={`${s.title} hizmet görseli`}/>
-    </section>
-    <section className="service-pro-body">
-      <aside className="service-pro-aside"><b>Bu hizmette ne sağlıyoruz?</b><p>{s.summary}</p>
-        <div className="deliverables"><span>Çalışma çıktıları</span>{s.deliverables.map(item=><div key={item}><CheckCircle2 size={15}/>{item}</div>)}</div>
-        <Link href="/hizmetler" className="all-services"><ArrowLeft size={15}/> Tüm hizmetler</Link>
-      </aside>
-      <article className="service-pro-content">{s.sections.map(([h,p],i)=><section key={h}><div className="section-no">{String(i+1).padStart(2,'0')}</div><div><h2>{h.replace(/^\d+\.\s*/, '')}</h2><p>{p}</p></div></section>)}
-        <div className="service-result"><b>ARYA ECY çalışma prensibi</b><p>Her çalışma mevcut durumun anlaşılmasıyla başlar; mevzuat, saha ve operasyon birlikte değerlendirilir. Bulgular yalnızca rapora yazılmaz, sorumlusu ve termin tarihi belli aksiyonlara dönüştürülür. Tamamlanan işlerin kanıtları düzenli tutulur ve değişen faaliyetler sisteme yeniden dahil edilir. Böylece danışmanlık, tek seferlik doküman üretiminden çıkarak işletmenin günlük yönetimine yerleşir.</p></div>
-      </article>
-    </section>
-  </main>
-}
+'use client';
+import {services} from '@/lib/siteData';import {serviceEnglish,englishServiceSections} from '@/lib/serviceEnglish';import Link from 'next/link';import {ArrowLeft,CheckCircle2,Home,Sparkles} from 'lucide-react';import {useLanguage} from '@/components/LanguageProvider';
+export default function ServiceDetail({slug}:{slug:string}){const {lang}=useLanguage();const s=services.find(x=>x.slug===slug);if(!s)return null;const en=lang==='en';const tr=s;const e=serviceEnglish[slug];const Icon=s.icon;const title=en?(e?.title||tr.title):tr.title;const intro=en?(e?.intro||tr.summary):tr.intro;const highlight=en?(e?.highlight||tr.highlight):tr.highlight;const summary=en?(e?.summary||tr.summary):tr.summary;const sections=en?englishServiceSections(title):tr.sections;const deliverables=en?['Compliance and gap assessment','Field action plan','Evidence and record structure','Performance monitoring set','Management summary and roadmap']:tr.deliverables;return <main className="service-page-pro"><header className="service-pro-header"><Link href="/" className="service-pro-brand"><img src="/logo.png" alt="ARYA ECY"/></Link><Link href="/" className="home-return"><Home size={16}/> {en?'Back to Home':'Ana Sayfaya Dön'}</Link></header><section className="service-pro-hero"><div className="service-pro-title"><span>ARYA ECY / {en?'SERVICES':'HİZMETLER'}</span><div className="service-icon"><Icon size={27}/></div><h1>{title}</h1><p>{intro}</p><div className="service-highlight"><Sparkles size={17}/><b>{highlight}</b></div></div><div className="service-pro-image" style={{backgroundImage:`linear-gradient(135deg,rgba(18,53,43,.04),rgba(18,53,43,.12)),url("${s.image}")`}} role="img" aria-label={title}/></section><section className="service-pro-body"><aside className="service-pro-aside"><b>{en?'What do we deliver?':'Bu hizmette ne sağlıyoruz?'}</b><p>{summary}</p><div className="deliverables"><span>{en?'Deliverables':'Çalışma çıktıları'}</span>{deliverables.map(item=><div key={item}><CheckCircle2 size={15}/>{item}</div>)}</div><Link href="/hizmetler" className="all-services"><ArrowLeft size={15}/> {en?'All services':'Tüm hizmetler'}</Link></aside><article className="service-pro-content">{sections.map(([h,p],i)=><section key={h}><div className="section-no">{String(i+1).padStart(2,'0')}</div><div><h2>{String(h).replace(/^\d+\.\s*/, '')}</h2><p>{p}</p></div></section>)}<div className="service-result"><b>{en?'ARYA ECY working principle':'ARYA ECY çalışma prensibi'}</b><p>{en?'Every engagement starts with understanding the current state. Regulation, field conditions and operations are assessed together; findings are converted into owned, time-bound actions and supported with traceable evidence.':'Her çalışma mevcut durumun anlaşılmasıyla başlar; mevzuat, saha ve operasyon birlikte değerlendirilir. Bulgular yalnızca rapora yazılmaz, sorumlusu ve termin tarihi belli aksiyonlara dönüştürülür. Tamamlanan işlerin kanıtları düzenli tutulur ve değişen faaliyetler sisteme yeniden dahil edilir.'}</p></div></article></section></main>}

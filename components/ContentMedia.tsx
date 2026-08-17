@@ -1,0 +1,1 @@
+export default function ContentMedia({url,title}:{url?:string;title:string}){if(!url)return null;const clean=url.split('?')[0].toLowerCase();const video=/\.(mp4|webm|ogg|mov|m4v)$/.test(clean);return video?<video className="content-media" controls preload="metadata"><source src={url}/></video>:<img className="content-media" src={url} alt={title}/>}

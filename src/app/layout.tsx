@@ -1,3 +1,3 @@
-import type {Metadata} from 'next';import './globals.css';import PWARegister from '@/components/PWARegister';
+import type {Metadata} from 'next';import './globals.css';import PWARegister from '@/components/PWARegister';import {LanguageProvider} from '@/components/LanguageProvider';
 export const metadata:Metadata={title:'ARYA ECY | Entegre Çevre Yönetimi',description:'ARYA ECY çevre yönetimi, ÇED, atık ve atıksu yönetimi, TMGD, KDU, ESG, karbon ve su ayak izi, su verimliliği ve enerji yönetimi hizmetleri.',manifest:'/manifest.webmanifest'};
-export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="tr"><body><PWARegister/>{children}</body></html>}
+export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="tr"><body><LanguageProvider><PWARegister/>{children}</LanguageProvider></body></html>}
