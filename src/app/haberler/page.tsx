@@ -1,0 +1,6 @@
+'use client';
+import Navbar from '@/components/Navbar';
+import {useEffect,useState} from 'react';
+import {getPublished,SiteContent} from '@/lib/cms';
+import Link from 'next/link';
+export default function Haberler(){const [items,setItems]=useState<SiteContent[]>([]);useEffect(()=>{getPublished('news').then(setItems)},[]);return <main className="article-page"><Navbar/><section className="services-index"><span>ARYA ECY</span><h1>Bizden Haberler</h1><p>ARYA ECY'den projeler, saha çalışmaları ve kurumsal gelişmeler.</p><div className="news-list-page">{items.length?items.map(x=><article key={x.id}><small>{x.published_at?new Date(x.published_at).toLocaleDateString('tr-TR'):''}</small><h2>{x.title}</h2><p>{x.excerpt||x.body}</p></article>):<article><h2>Sürdürülebilir yarınlar için çalışmaya devam ediyoruz</h2><p>Projelerimiz ve saha çalışmalarımızla ilgili güncel gelişmeler burada yayınlanacaktır.</p></article>}</div><Link href="/" className="home-return inline-return">Ana Sayfaya Dön</Link></section></main>}

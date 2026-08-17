@@ -13,7 +13,7 @@ export default async function ServicePage({params}:{params:Promise<{slug:string}
   return <main className="service-page-pro">
     <header className="service-pro-header">
       <a href="/" className="service-pro-brand"><img src="/logo.png" alt="ARYA ECY"/></a>
-      <Link href="/" className="home-return"><Home size={16}/> Ana Sayfaya Dön</Link>
+      <Link href="/" className="home-return"><Home size={16}/> Ana Ekrana Dön</Link>
     </header>
 
     <section className="service-pro-hero">
@@ -24,7 +24,7 @@ export default async function ServicePage({params}:{params:Promise<{slug:string}
         <p>{s.intro}</p>
         <div className="service-highlight"><Sparkles size={17}/><b>{s.highlight}</b></div>
       </div>
-      <div className="service-pro-image" style={{backgroundImage:`linear-gradient(135deg,rgba(18,53,43,.08),rgba(18,53,43,.18)),url("${s.image}")`}} role="img" aria-label={`${s.title} - ARYA ECY hizmet görseli`}/>
+      <div className="service-pro-image" style={{backgroundImage:`linear-gradient(135deg,rgba(18,53,43,.08),rgba(18,53,43,.18)),url(${s.image})`}} role="img" aria-label={`${s.title} - ARYA ECY hizmet görseli`}/>
     </section>
 
     <section className="service-pro-body">
