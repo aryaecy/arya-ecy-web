@@ -1,7 +1,7 @@
 'use client';
 import {useEffect,useMemo,useState} from 'react';import Navbar from '@/components/Navbar';import {adminList,deleteContent,saveContent,signInAdmin,uploadPdf,SiteContent,ContentType} from '@/lib/cms';import {BookOpen,Info,MessageSquare,AlertTriangle,FileText,Megaphone} from 'lucide-react';
 const blank:SiteContent={type:'article',title:'',excerpt:'',body:'',image_url:'',file_url:'',published:false,sort_order:0};
-const labels:Record<ContentType,string>={article:'Kütüphane Makalesi',announcement:'Duyuru',ad:'Reklam / Güncel',about:'Hakkımızda',important:'Önemli',regulation:'Mevzuat PDF'};
+const labels:Record<ContentType,string>={article:'Kütüphane Makalesi',announcement:'Duyuru',news:'Bizden Haberler',ad:'Reklam / Güncel',about:'Hakkımızda',important:'Önemli',regulation:'Mevzuat PDF'};
 const cards=[{type:'about' as ContentType,label:'Hakkımızda',icon:Info},{type:'article' as ContentType,label:'Kütüphane',icon:BookOpen},{type:'announcement' as ContentType,label:'Duyurular',icon:MessageSquare},{type:'important' as ContentType,label:'Önemli',icon:AlertTriangle},{type:'regulation' as ContentType,label:'Mevzuat',icon:FileText},{type:'ad' as ContentType,label:'Reklam / Güncel',icon:Megaphone}];
 export default function Admin(){
  const [token,setToken]=useState('');const [email,setEmail]=useState('');const [password,setPassword]=useState('');const [err,setErr]=useState('');const [items,setItems]=useState<SiteContent[]>([]);const [form,setForm]=useState<SiteContent>(blank);const [active,setActive]=useState<ContentType>('article');const [uploading,setUploading]=useState(false);
