@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="hero-panel">
+    <section id="hakkimizda" className="hero-panel">
       <div className="hero-copy">
         <span className="eyebrow">ARYA Entegre Çevre Yönetimi</span>
         <h1>Entegre Çevre Yönetimi ve Sürdürülebilirlik Çözümleri</h1>
